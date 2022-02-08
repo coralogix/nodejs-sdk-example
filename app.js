@@ -1,16 +1,15 @@
 //Coralogix Node SDK Example
 //Author: Coralogix Ltd.
-//Email: juan@coralogix.com
+//Email: support@coralogix.com
     
     // This set up the Env Variable for this stand alone example. Best practice is to use .env or os env variable.
-    process.env['CORALOGIX_URL'] = 'https://api.coralogix.us/api/v1/logs';
     var Coralogix = require("coralogix-logger");
     // global confing for application name, private key, subsystem name 
     
     const config = new Coralogix.LoggerConfig({
-        applicationName:"node tester",
-        privateKey:"03f2f7a3-0e6a-77e9-9072-630218025977",
-        subsystemName:"node tester sub",
+        applicationName:"nodetester",
+        privateKey:"",
+        subsystemName:"nodetestersub",
     });
      
     Coralogix.CoralogixLogger.configure(config);

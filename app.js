@@ -11,7 +11,8 @@
         privateKey:"",
         subsystemName:"nodetestersub",
     });
-     
+    
+    //We apply the config into our Logger.
     Coralogix.CoralogixLogger.configure(config);
      
     // create a new logger with category 

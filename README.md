@@ -34,5 +34,51 @@ Can be added as a Environment Variable or with the following piece of code
     process.env['CORALOGIX_URL'] = 'https://api.coralogix.us/api/v1/logs';
 
 ```
+
+## SDK Usage
+
+Importing the SDK. This way we can use it in our code.
+```
+var Coralogix = require("coralogix-logger");
+```
+
+We create a LoggerConfig with the values needed by the SDK. Above you will see the description of each value.
+
+```
+const config = new Coralogix.LoggerConfig({
+        applicationName:"nodetester",
+        privateKey:"",
+        subsystemName:"nodetestersub",
+    });
+```
+
+We apply the config we created to our Logger.
+```
+Coralogix.CoralogixLogger.configure(config);
+```
+
+We then Create a new logger using CoralogixLogger, alse we will set up a Category for it. Category is one of several Metadata for Coralogix Logs.
+```
+const logger = new Coralogix.CoralogixLogger("My Category");
+```
+
+Now we are ready to start sending logs to Coralogix.
+
+We will create a new log with several Metadata, the only one mandatory is severity.
+```
+const log = new Coralogix.Log({
+        severity:Coralogix.Severity.info,
+        className:"myClassName",
+        methodName:"myMethodName",
+        text:"Hello World ! "
+    })
+```
+In this example severity will be Info, className and methodName are other Coralogix Metadata that you can send as part of your log, and **text** is the actual log.
+
+Then the only thing missing is actually sending the log.
+```
+logger.addLog(log);
+```
+
 For more information please visit https://coralogix.com/integrations/coralogix-nodejs-integration/
 
